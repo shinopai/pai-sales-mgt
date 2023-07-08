@@ -43,7 +43,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -70,3 +70,25 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# 検索＆ソート
+gem 'ransack'
+
+# ページネーション
+gem 'kaminari'
+
+# テストデータ
+gem 'faker'
+
+# ユーザー認証
+gem 'devise'
+
+# 日本語化
+gem 'devise-i18n'
+gem 'rails-i18n'
+
+# jsビルド
+gem 'jsbundling-rails'
+
+# cssビルド
+gem 'cssbundling-rails'
