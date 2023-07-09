@@ -26,6 +26,10 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && node --version \
     && npm --version
 
+# yarnインストール
+RUN yarn install --frozen-lockfile
+COPY yarn.lock /app/yarn.lock
+
 # Bundlerの不具合対策(1)
 RUN gem update --system
 RUN bundle update --bundler
