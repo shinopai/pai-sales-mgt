@@ -6,7 +6,36 @@
   padding-top: 50px;
 }
 
-/* rootページ */
+/* エラーメッセージ */
+.err-list {
+  background-color: #e41c21;
+  font-size: 14px;
+  text-align: center;
+  padding: 1em 0;
+  &__item {
+    color: #fff;
+  }
+}
+
+/* アラートメッセージ */
+.alert-msg {
+  background-color: #e41c21;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 0.5em 0;
+}
+
+/* フラッシュメッセージ */
+.flash-msg {
+  background-color: #4cae54;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 0.5em 0;
+}
+
+/* root画面 */
 .index {
   &__logo {
     width: 350px;
@@ -30,5 +59,65 @@
     &:hover {
       opacity: 0.8;
     }
+  }
+}
+
+/* ログイン＆登録画面 */
+.auth-form {
+  margin-top: 20px;
+  &-wrap {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+  &__logo {
+    width: 350px;
+    margin: 0 auto;
+  }
+  &__heading {
+    background-color: #f5f5f5;
+    font-size: 2rem;
+    padding: 0.2em 0;
+    text-align: center;
+  }
+  &__item {
+    margin-top: 15px;
+  }
+  &__label {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  &__input {
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 0 0.5em;
+  }
+  &__check {
+    vertical-align: sub;
+  }
+  &__submit {
+    background-color: $color-blue;
+    color: #fff;
+    font-size: 1.4rem;
+    border: none;
+    font-weight: bold;
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    padding: 0.5em 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &__links {
+    margin-top: 20px;
+  }
+  &__link {
+    font-size: 1.4rem;
+    text-decoration: underline;
+    width: fit-content;
+    margin: 0 auto;
   }
 }
