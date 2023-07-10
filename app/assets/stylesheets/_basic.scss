@@ -1,0 +1,95 @@
+/* basic style */
+* {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  line-height: 1.5;
+  color: #333;
+}
+body,
+html {
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+dl {
+  margin: 0;
+}
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li,
+b,
+strong,
+option,
+span,
+label,
+input,
+select,
+dt,
+dd {
+  font-size: 1em;
+}
+a {
+  text-decoration: none;
+  display: block;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+img {
+  width: 100%;
+  vertical-align: bottom;
+  display: block;
+}
+figure {
+  margin: 0;
+}
+table {
+  width: 100%;
+}
+:focus {
+  outline: none;
+}
+
+/* basic class */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-col {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.contents {
+  display: contents;
+}
+.wrap {
+  width: min(95%, 1200px);
+  margin: 0 auto;
+}
+
+/* basic color */
+$color-blue: #2196f3;
+
+/* breakpoints */
+$breakpoints: (
+  "w-960": "screen and (max-width: 960px)",
+  "w-768": "screen and (max-width: 768px)",
+  "w-520": "screen and (max-width: 520px)",
+) !default;

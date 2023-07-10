@@ -1,0 +1,69 @@
+/* mixin */
+/* media query */
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/* centering */
+@mixin centering() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* set border */
+@mixin set-border($width, $style, $color) {
+  border: $width $style $color;
+}
+
+/* set top position of pseudo element */
+@mixin set-top-pos($height) {
+  top: calc(50% - #{$height} / 2);
+}
+
+/* set pseudo element(no image) */
+@mixin set-pseudo-no-img($width, $height) {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: $width;
+  height: $height;
+  @include set-top-pos($height);
+  @content;
+}
+
+/* set pseudo element */
+@mixin set-pseudo($image, $width, $height) {
+  content: "";
+  background: url($image) no-repeat;
+  background-size: contain;
+  display: inline-block;
+  position: absolute;
+  width: $width;
+  height: $height;
+  @include set-top-pos($height);
+  @content;
+}
+
+/* br block style */
+@mixin br-block-style($val) {
+  .w-#{$val}-block {
+    display: none;
+    @include mq(w-#{$val}) {
+      display: block;
+    }
+    @content;
+  }
+}
+
+/* br none style */
+@mixin br-none-style($val) {
+  .w-#{$val}-none {
+    @include mq(w-#{$val}) {
+      display: none;
+    }
+    @content;
+  }
+}

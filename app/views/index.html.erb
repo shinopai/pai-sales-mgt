@@ -1,0 +1,9 @@
+<div class="index">
+    <figure class="index__logo">
+      <%= image_tag 'logo_site01.webp' %>
+    </figure>
+    <div class="index__btns flex">
+      <%= link_to 'ログイン', new_user_session_path, class: 'index__btn' %>
+      <%= link_to '登録', new_user_registration_path, class: 'index__btn' %>
+    </div>
+</div>

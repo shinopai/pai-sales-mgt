@@ -6,6 +6,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
+COPY package.json /app/package.json
 
 # nodeインストール
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
@@ -27,8 +28,11 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && npm --version
 
 # yarnインストール
-RUN yarn install --frozen-lockfile
-COPY yarn.lock /app/yarn.lock
+RUN npm install -g yarn
+
+# esbuild＆sassインストール
+RUN yarn global add esbuild \
+    && yarn global add sass
 
 # Bundlerの不具合対策(1)
 RUN gem update --system
