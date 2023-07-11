@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_234923) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_072212) do
   create_table "clients", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -22,6 +22,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_234923) do
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "receiving_orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "slip_no", null: false
+    t.datetime "order_date", null: false
+    t.integer "quantity", null: false
+    t.text "notes"
+    t.integer "status", default: 1, null: false
+    t.bigint "item_id", null: false
+    t.bigint "client_id", null: false
+    t.bigint "worker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_receiving_orders_on_client_id"
+    t.index ["item_id"], name: "index_receiving_orders_on_item_id"
+    t.index ["worker_id"], name: "index_receiving_orders_on_worker_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -44,4 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_234923) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "receiving_orders", "clients"
+  add_foreign_key "receiving_orders", "items"
+  add_foreign_key "receiving_orders", "workers"
 end

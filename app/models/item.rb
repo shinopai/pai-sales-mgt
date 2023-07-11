@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+  # relation
+  has_many :receiving_orders, dependent: :destroy
+
   # validations
   with_options presence: true do
     validates :name, length: { maximum: 30 }
