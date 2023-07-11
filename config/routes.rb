@@ -13,4 +13,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+  scope :receiving_orders do
+    # 受注一覧
+    get '/', to: 'receiving_orders#index', as: :receiving_orders
+  end
+
 end
