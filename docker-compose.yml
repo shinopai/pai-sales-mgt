@@ -11,6 +11,7 @@ services:
       - "3306:3306"
     volumes:
       - pai-sql:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/my.cnf
 
   web:
     build: .

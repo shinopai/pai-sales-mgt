@@ -20,6 +20,7 @@ module App
     # config.eager_load_paths << Rails.root.join("extras")
 
     # デフォルトロケール
+    config.i18n.available_locales = [:ja, :en]
     config.i18n.default_locale = :ja
 
     # バリデーションエラーが出た際のレイアウト崩れ防止
