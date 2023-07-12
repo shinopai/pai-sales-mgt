@@ -35,6 +35,45 @@
   padding: 0.5em 0;
 }
 
+/* ヘッダー */
+.header {
+  background-color: $color-blue;
+  &__inner {
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    width: 200px;
+  }
+  &-nav {
+    font-size: 1.4rem;
+    column-gap: 40px;
+    &__link {
+      color: #fff;
+      position: relative;
+      &.current {
+        background-color: #0d7cd5;
+      }
+      &:not(:last-child) {
+        &::after {
+          @include set-pseudo("ico_site01.webp", 20px, 20px);
+          top: initial;
+          right: -20px;
+          bottom: 1px;
+        }
+      }
+      &:last-child {
+        &::before {
+          @include set-pseudo("ico_site02.webp", 15px, 25px);
+          top: initial;
+          left: -17px;
+          bottom: -6px;
+        }
+      }
+    }
+  }
+}
+
 /* root画面 */
 .index {
   &__logo {
@@ -119,5 +158,81 @@
     text-decoration: underline;
     width: fit-content;
     margin: 0 auto;
+  }
+}
+
+/* ベーシックヘッディング */
+.basic-heading {
+  font-size: 1.8rem;
+  color: $color-blue;
+  background-color: #f5f5f5;
+  padding: 0.3em 0.5em;
+  border-radius: 5px;
+}
+
+/* 検索エリア */
+.search-area {
+  @include set-border(1px, solid, #f4f4f4);
+  margin-top: 15px;
+  border-radius: 5px;
+  &__heading {
+    font-size: 1.8rem;
+    background-color: #f5f5f5;
+    padding: 0.3em 0.5em;
+    border-radius: 5px 5px 0 0;
+  }
+}
+
+/* 受注一覧画面 */
+.receiving {
+  margin-top: 15px;
+  &-head {
+    &--upper {
+      justify-content: space-between;
+      align-items: center;
+    }
+    &--lower {
+      margin-top: 15px;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &__btn {
+    background-color: $color-blue;
+    color: #fff;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 0.3em 0;
+    position: relative;
+    width: 135px;
+    &::before {
+      @include set-pseudo("ico_site03.webp", 15px, 15px);
+      @include set-top-pos(17px);
+      left: 17px;
+    }
+  }
+  &__number {
+    background-color: #bab9bb;
+    color: #fff;
+    font-size: 12px;
+    padding: 0.1em 1em;
+    border-radius: 100vh;
+  }
+  &__total {
+    color: #7d7c7c;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+  &__table {
+    margin-top: 15px;
+    border-collapse: collapse;
+    th {
+      @include set-border(1px, solid, rgba(51, 51, 51, 0.5));
+      color: #fff;
+      background-color: $color-blue;
+      font-size: 1.4rem;
+      text-align: left;
+      padding: 0.3em 0.5em;
+    }
   }
 }

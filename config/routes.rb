@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   scope :receiving_orders do
     # 受注一覧
-    get '/', to: 'receiving_orders#index', as: :receiving_orders
+    get '/', to: 'receiving_orders/index#index', as: :receiving_orders
   end
 
 end

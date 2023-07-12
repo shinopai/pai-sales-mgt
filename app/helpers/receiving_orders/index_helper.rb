@@ -1,0 +1,2 @@
+module ReceivingOrders::IndexHelper
+end

@@ -1,2 +1,62 @@
-<p>受注一覧</p>
+<div class="wrap">
+  <h2 class="basic-heading">受注一覧</h2>
+  <div class="search-area">
+    <h2 class="search-area__heading">検索条件</h2>
+    <form action="">検索フォーム</form>
+  </div>
+  <div class="receiving">
+    <div class="receiving-head--upper flex">
+      <%= link_to '新規作成', '', class: 'receiving__btn' %>
+      <span class="receiving__number">0件</span>
+    </div>
+    <div class="receiving-head--lower flex">
+      <p>pagination</p>
+      <p class="receiving__total">売上合計: 0円</p>
+    </div>
+    <table class="receiving__table">
+      <tbody>
+        <tr>
+          <th></th>
+          <th colspan="9">受注</th>
+          <th>配達</th>
+          <th colspan="2">注文</th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>No.</th>
+          <th>受注日</th>
+          <th>受注先</th>
+          <th>商品名</th>
+          <th>数量</th>
+          <th>単価</th>
+          <th>合計</th>
+          <th>備考</th>
+          <th>売上日</th>
+          <th>状態</th>
+          <th>担当者</th>
+          <th>日付</th>
+          <th>注文先</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <%= link_to 'ログアウト', destroy_user_session_path %>

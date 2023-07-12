@@ -1,2 +1,0 @@
-class ReceivingOrdersController < ApplicationController
-end

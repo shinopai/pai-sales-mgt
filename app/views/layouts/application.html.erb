@@ -12,6 +12,11 @@
   </head>
 
   <body>
+    <!-- header -->
+    <% if user_signed_in? %>
+    <%= render 'shared/header' %>
+    <% end %>
+
     <% if flash[:notice] %>
       <p class="notice-msg"><%= notice %></p>
     <% end %>
