@@ -3,7 +3,7 @@
 
 /* main wrap */
 .main {
-  padding-top: 50px;
+  padding: 50px 0;
 }
 
 /* エラーメッセージ */
@@ -70,6 +70,22 @@
           bottom: -6px;
         }
       }
+    }
+  }
+}
+
+/* ページネーション */
+.pagination {
+  font-size: 1.4rem;
+  & > span {
+    @include set-border(1px, solid, #f4f4f4);
+    padding: 0.3em 0.8em;
+    &.current {
+      background-color: $color-blue;
+      color: #fff;
+    }
+    a {
+      color: $color-blue;
     }
   }
 }
@@ -265,6 +281,11 @@
       font-size: 1.4rem;
       text-align: left;
       padding: 0.3em 0.5em;
+    }
+    td {
+      @include set-border(1px, solid, #a8c2d4);
+      font-size: 1.2rem;
+      padding: 0.5em;
     }
   }
 }

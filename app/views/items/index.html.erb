@@ -6,8 +6,8 @@
   </div>
   <div class="item">
     <div class="item__head flex">
-      <p>pagination</p>
-      <span class="item__number">0件</span>
+      <%= paginate @results %>
+      <span class="item__number"><%= @results.total_count %>件</span>
     </div>
     <% if @results.any? %>
     <table class="item__table">
@@ -19,13 +19,15 @@
           <th>在庫金額</th>
           <th></th>
         </tr>
+        <% @results.each do |result| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= result.code %></td>
+          <td><%= result.name %></td>
+          <td><%= result.stock %></td>
+          <td><%= show_total_amount(result.price, result.stock) %></td>
           <td></td>
         </tr>
+        <% end %>
       </tbody>
     </table>
     <% else %>

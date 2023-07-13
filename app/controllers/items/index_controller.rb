@@ -1,6 +1,6 @@
 class Items::IndexController < ApplicationController
   def index
-    @results = Item.all
+    @results = Item.order(id: :desc).page(params[:page])
 
     render 'items/index'
   end
