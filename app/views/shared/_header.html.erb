@@ -6,7 +6,7 @@
       </h1>
       <nav class="header-nav flex">
         <a href="/receiving_orders" class="header-nav__link <%= ' current' if current_page?(controller: 'receiving_orders/index', action: 'index') %>">受注</a>
-        <%= link_to '在庫', '', class: 'header-nav__link' %>
+        <a href="/items" class="header-nav__link <%= ' current' if current_page?(controller: 'items/index', action: 'index') %>">在庫</a>
         <%= link_to '発注', '', class: 'header-nav__link' %>
         <%= link_to 'ログアウト', destroy_user_session_path, class: 'header-nav__link' %>
       </nav>

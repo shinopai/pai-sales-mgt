@@ -1,0 +1,35 @@
+<div class="wrap">
+  <h2 class="basic-heading">在庫照会</h2>
+  <div class="search-area">
+    <h2 class="search-area__heading">検索条件</h2>
+    <form action="">検索フォーム</form>
+  </div>
+  <div class="item">
+    <div class="item__head flex">
+      <p>pagination</p>
+      <span class="item__number">0件</span>
+    </div>
+    <% if @results.any? %>
+    <table class="item__table">
+      <tbody>
+        <tr>
+          <th>商品コード</th>
+          <th>商品名</th>
+          <th>在庫</th>
+          <th>在庫金額</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <% else %>
+    <p class="item__txt">在庫データはありません</p>
+    <% end %>
+  </div>
+</div>
