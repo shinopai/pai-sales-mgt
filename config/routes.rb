@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   scope :items do
     # 在庫一覧
     get '/', to: 'items/index#index', as: :items
+
+    # 在庫検索
+    get '/search', to: 'items/index#search', as: :items_search
   end
 
 end

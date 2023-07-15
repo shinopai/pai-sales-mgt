@@ -199,6 +199,38 @@
   }
 }
 
+/* 検索フォーム */
+.search-form {
+  column-gap: 25px;
+  align-items: center;
+  padding: 20px 10px;
+  &__label {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  &__input {
+    font-size: 1.4rem;
+    padding: 0 0.5em;
+  }
+  &__check {
+    vertical-align: sub;
+  }
+  &__submit {
+    @include set-border(2px, solid, #f4f4f4);
+    background-color: transparent;
+    width: 100px;
+    cursor: pointer;
+    &-wrap {
+      font-size: 1.4rem;
+      position: relative;
+      &::before {
+        @include set-pseudo("ico_site04.webp", 20px, 15px);
+        left: 1.5em;
+      }
+    }
+  }
+}
+
 /* 受注一覧画面 */
 .receiving {
   margin-top: 15px;
@@ -274,6 +306,11 @@
   &__table {
     margin-top: 15px;
     border-collapse: collapse;
+    tr {
+      &.out-of-stock {
+        background-color: #fad2d3;
+      }
+    }
     th {
       @include set-border(1px, solid, rgba(51, 51, 51, 0.5));
       color: #fff;
@@ -287,5 +324,9 @@
       font-size: 1.2rem;
       padding: 0.5em;
     }
+  }
+  &__txt {
+    font-size: 1.4rem;
+    text-align: center;
   }
 }
