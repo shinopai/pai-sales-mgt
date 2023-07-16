@@ -41,6 +41,11 @@
   &__inner {
     justify-content: space-between;
     align-items: center;
+    @include mq(w-520) {
+      flex-direction: column;
+      row-gap: 10px;
+      padding: 10px 0;
+    }
   }
   &__logo {
     width: 200px;
@@ -204,6 +209,14 @@
   column-gap: 25px;
   align-items: center;
   padding: 20px 10px;
+  @include mq(w-564) {
+    row-gap: 10px;
+  }
+  &__item {
+    @include mq(w-564) {
+      width: 100%;
+    }
+  }
   &__label {
     font-size: 1.2rem;
     font-weight: bold;
@@ -295,6 +308,11 @@
     margin-top: 15px;
     justify-content: space-between;
     align-items: center;
+    @include mq(w-768) {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 15px;
+    }
   }
   &__number {
     background-color: #bab9bb;
@@ -306,6 +324,15 @@
   &__table {
     margin-top: 15px;
     border-collapse: collapse;
+    @include mq(w-768) {
+      min-width: 700px;
+    }
+    &-wrap {
+      overflow-x: auto;
+      @include mq(w-768) {
+        overflow-x: scroll;
+      }
+    }
     tr {
       &.out-of-stock {
         background-color: #fad2d3;
@@ -318,11 +345,42 @@
       font-size: 1.4rem;
       text-align: left;
       padding: 0.3em 0.5em;
+      &.code {
+        width: 13%;
+      }
+      &.amount {
+        width: 12%;
+      }
+      &.name {
+        width: 40%;
+      }
+      &.stock {
+        width: 7%;
+      }
+      &.empty {
+        width: 28%;
+      }
     }
     td {
       @include set-border(1px, solid, #a8c2d4);
       font-size: 1.2rem;
       padding: 0.5em;
+      .flex {
+        justify-content: flex-start;
+        column-gap: 15px;
+        .btn {
+          background-color: $color-blue;
+          color: #fff;
+          font-size: 1.4rem;
+          width: 75px;
+          text-align: center;
+          padding: 0.1em 0;
+          border-radius: 3px;
+          @include mq(w-1024) {
+            width: 50px;
+          }
+        }
+      }
     }
   }
   &__txt {

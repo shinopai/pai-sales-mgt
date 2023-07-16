@@ -24,26 +24,34 @@
       <span class="item__number"><%= @results.total_count %>件</span>
     </div>
     <% if @results.any? %>
-    <table class="item__table">
-      <tbody>
-        <tr>
-          <th>商品コード</th>
-          <th>商品名</th>
-          <th>在庫</th>
-          <th>在庫金額</th>
-          <th></th>
-        </tr>
-        <% @results.each do |result| %>
-        <tr class="<%= 'out-of-stock' if result.stock == 0 %>">
-          <td><%= result.code %></td>
-          <td><%= result.name %></td>
-          <td><%= result.stock %></td>
-          <td><%= show_total_amount(result.price, result.stock) %></td>
-          <td></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="item__table-wrap">
+      <table class="item__table">
+        <tbody>
+          <tr>
+            <th class="code">商品コード</th>
+            <th class="name">商品名</th>
+            <th class="stock">在庫</th>
+            <th class="amount">在庫金額</th>
+            <th class="empty"></th>
+          </tr>
+          <% @results.each do |result| %>
+          <tr class="<%= 'out-of-stock' if result.stock == 0 %>">
+            <td><%= result.code %></td>
+            <td><%= result.name %></td>
+            <td><%= result.stock %></td>
+            <td><%= show_total_amount(result.price, result.stock) %></td>
+            <td>
+              <div class="flex">
+                <%= link_to '編集', '#', class: 'btn' %>
+                <%= link_to '受注', '#', class: 'btn' %>
+                <%= link_to '発注', '#', class: 'btn' %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     <% else %>
     <p class="item__txt">在庫データはありません</p>
     <% end %>

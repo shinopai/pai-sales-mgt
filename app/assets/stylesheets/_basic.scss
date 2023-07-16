@@ -89,7 +89,9 @@ $color-blue: #2196f3;
 
 /* breakpoints */
 $breakpoints: (
+  "w-1024": "screen and (max-width: 1024px)",
   "w-960": "screen and (max-width: 960px)",
   "w-768": "screen and (max-width: 768px)",
+  "w-564": "screen and (max-width: 564px)",
   "w-520": "screen and (max-width: 520px)",
 ) !default;
