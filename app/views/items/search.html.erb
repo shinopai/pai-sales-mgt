@@ -39,7 +39,13 @@
           <td><%= result.name %></td>
           <td><%= result.stock %></td>
           <td><%= show_total_amount(result.price, result.stock) %></td>
-          <td></td>
+          <td>
+          <div class="flex">
+            <%= link_to '編集', items_edit_path(result), class: 'btn' %>
+            <%= link_to '受注', '#', class: 'btn' %>
+            <%= link_to '発注', '#', class: 'btn' %>
+          </div>
+          </td>
         </tr>
         <% end %>
       </tbody>

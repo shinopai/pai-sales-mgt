@@ -25,6 +25,12 @@ Rails.application.routes.draw do
 
     # 在庫検索
     get '/search', to: 'items/index#search', as: :items_search
+
+    # 在庫編集
+    get '/:item_id/edit', to: 'items/edit/index#index', as: :items_edit
+
+    # 在庫更新
+    patch '/:item_id/edit/submit', to: 'items/edit/index#submit', as: :items_edit_submit
   end
 
 end
