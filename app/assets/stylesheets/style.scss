@@ -250,6 +250,10 @@
     max-width: 550px;
     margin: 0 auto;
   }
+  &__heading {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
   &__item {
     margin-bottom: 15px;
     &.last {
@@ -264,6 +268,17 @@
     font-size: 1.6rem;
     width: 100%;
     padding: 0.1em 0.5em;
+  }
+  &__select {
+    font-size: 1.4rem;
+    padding: 0.4em 0;
+    width: 50%;
+  }
+  &__textarea {
+    resize: none;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 0.3em;
   }
   &__submit {
     font-size: 1.4rem;

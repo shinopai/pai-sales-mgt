@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   scope :receiving_orders do
     # 受注一覧
     get '/', to: 'receiving_orders/index#index', as: :receiving_orders
+
+    # 新規受注作成画面
+    get '/:item_id/create', to: 'receiving_orders/create/index#index', as: :receiving_orders_create
+
+    # 新規受注作成
+    post '/:item_id/create/submit', to: 'receiving_orders/create/index#submit', as: :receiving_orders_create_submit
   end
 
   scope :items do

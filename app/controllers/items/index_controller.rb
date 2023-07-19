@@ -1,4 +1,5 @@
 class Items::IndexController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_q
 
   def index
@@ -8,9 +9,6 @@ class Items::IndexController < ApplicationController
   end
 
   def search
-    logger.debug('ここから')
-    logger.debug(params[:q][:stock])
-    logger.debug('ここまで')
     if params[:q][:stock] == 1
       @results = @q.result(stock: 0).order(id: :desc).page(params[:page])
     else
