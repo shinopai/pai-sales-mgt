@@ -16,9 +16,9 @@ class ReceivingOrders::Create::IndexController < ApplicationController
     max_value = ReceivingOrder.maximum('slip_no')
 
     if max_value.nil?
-      slip_no = sprintf("%04d", 1)
+      slip_no = 1
     else
-      slip_no = sprintf("%04d", max_value + 1)
+      slip_no = max_value + 1
     end
 
     @new_order.slip_no = slip_no

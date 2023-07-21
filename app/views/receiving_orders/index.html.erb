@@ -6,57 +6,65 @@
   </div>
   <div class="receiving">
     <div class="receiving-head--upper flex">
-      <%= link_to '新規作成', '', class: 'receiving__btn' %>
+      <%= link_to '新規作成', items_path, class: 'receiving__btn' %>
       <span class="receiving__number">0件</span>
     </div>
     <div class="receiving-head--lower flex">
-      <p>pagination</p>
-      <p class="receiving__total">売上合計: 0円</p>
+      <%= paginate @results %>
+      <p class="receiving__total">売上合計: <%= number_to_currency(@total_sales) %></p>
     </div>
     <% if @results.any? %>
-    <table class="receiving__table">
-      <tbody>
-        <tr>
-          <th></th>
-          <th colspan="9">受注</th>
-          <th>配達</th>
-          <th colspan="2">注文</th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>No.</th>
-          <th>受注日</th>
-          <th>受注先</th>
-          <th>商品名</th>
-          <th>数量</th>
-          <th>単価</th>
-          <th>合計</th>
-          <th>備考</th>
-          <th>売上日</th>
-          <th>状態</th>
-          <th>担当者</th>
-          <th>日付</th>
-          <th>注文先</th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="receiving__table-wrap">
+      <table class="receiving__table">
+        <tbody>
+          <tr>
+            <th></th>
+            <th colspan="9">受注</th>
+            <th>配達</th>
+            <th colspan="2">注文</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>No.</th>
+            <th>受注日</th>
+            <th>受注先</th>
+            <th>商品名</th>
+            <th>数量</th>
+            <th>単価</th>
+            <th>合計</th>
+            <th>備考</th>
+            <th>売上日</th>
+            <th>状態</th>
+            <th>担当者</th>
+            <th>日付</th>
+            <th>注文先</th>
+            <th></th>
+          </tr>
+          <% @results.each do |result| %>
+          <tr>
+            <td><%= result.slip_no %></td>
+            <td><%= result.order_date.strftime('%m/%d') %></td>
+            <td><%= result.client.name %></td>
+            <td><%= result.item.name %></td>
+            <td><%= result.quantity %></td>
+            <td><%= number_to_currency(result.item.price) %></td>
+            <td><%= show_total_order_amount(result.item.price, result.quantity) %></td>
+            <td><%= result.notes %></td>
+            <td><%= result.order_date.strftime('%m/%d') %></td>
+            <td><%= result.status %></td>
+            <td><%= result.worker.name %></td>
+            <td>test</td>
+            <td>test</td>
+            <td>
+              <div class="flex">
+                <%= link_to '編集', '#', class: 'btn' %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     <% else %>
     <p class="receiving__txt">受注データはありません</p>
     <% end %>
