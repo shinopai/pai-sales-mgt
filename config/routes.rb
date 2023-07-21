@@ -23,6 +23,12 @@ Rails.application.routes.draw do
 
     # 新規受注作成
     post '/:item_id/create/submit', to: 'receiving_orders/create/index#submit', as: :receiving_orders_create_submit
+
+    # 受注編集
+    get '/:receiving_order_id/edit', to: 'receiving_orders/edit/index#index', as: :receiving_orders_edit
+
+    # 受注更新
+    patch '/:receiving_order_id/edit/submit', to: 'receiving_orders/edit/index#submit', as: :receiving_orders_edit_submit
   end
 
   scope :items do

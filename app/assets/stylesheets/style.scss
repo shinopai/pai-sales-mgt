@@ -296,6 +296,12 @@
       opacity: 0.8;
     }
   }
+  &__link {
+    width: fit-content;
+    font-size: 1.4rem;
+    margin: 0 auto;
+    text-decoration: underline;
+  }
 }
 
 /* 受注一覧画面 */
