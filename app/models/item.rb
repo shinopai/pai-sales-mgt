@@ -10,6 +10,6 @@ class Item < ApplicationRecord
 
   # ransackable attributes
   def self.ransackable_attributes(auth_object = nil)
-    ["name", "stock"]
+    ["code", "name", "stock"]
   end
 end

@@ -29,6 +29,9 @@ Rails.application.routes.draw do
 
     # 受注更新
     patch '/:receiving_order_id/edit/submit', to: 'receiving_orders/edit/index#submit', as: :receiving_orders_edit_submit
+
+    # 受注検索
+    get '/search', to: 'receiving_orders/index#search', as: :receiving_orders_search
   end
 
   scope :items do

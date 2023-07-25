@@ -27,16 +27,18 @@ class ReceivingOrders::Create::IndexController < ApplicationController
     @new_order.client_id = order_params[:client_id]
     @new_order.worker_id = order_params[:worker_id]
 
-    # 数量が在庫数を上回っていたらエラーメッセージを格納
+    # 数量が在庫数を上回っていたらステータスを「受注(在庫無)」に変更
     if order_params[:quantity].to_i > @item.stock
-      @new_order.errors.add(:quantity, message: '数量は在庫数より小さい値を入力してください')
-    else
-      @new_order.quantity = order_params[:quantity]
+      @new_order.status = 2
     end
 
+    @new_order.quantity = order_params[:quantity]
+
     if @new_order.valid?
-      # 商品の在庫数から受注数を引く
-      @item.stock = @item.stock - order_params[:quantity].to_i
+      # 商品の在庫数から受注数を引く(在庫が足りている場合)
+      if order_params[:quantity].to_i >= @item.stock
+        @item.stock = @item.stock - order_params[:quantity].to_i
+      end
 
       @item.save
       @new_order.save
