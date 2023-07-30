@@ -7,7 +7,7 @@
       <nav class="header-nav flex">
         <a href="/receiving_orders" class="header-nav__link <%= ' current' if is_current_page(request.fullpath, 'receiving_orders') %>">受注</a>
         <a href="/items" class="header-nav__link <%= ' current' if is_current_page(request.fullpath, 'items') %>">在庫</a>
-        <%= link_to '発注', '', class: 'header-nav__link' %>
+        <a href="/orders" class="header-nav__link <%= ' current' if is_current_page(request.fullpath, 'orders') %>">発注</a>
         <%= link_to 'ログアウト', destroy_user_session_path, class: 'header-nav__link' %>
       </nav>
     </div>

@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   # relation
   has_many :receiving_orders, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   # validations
   with_options presence: true do

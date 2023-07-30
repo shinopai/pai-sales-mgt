@@ -48,4 +48,11 @@ Rails.application.routes.draw do
     patch '/:item_id/edit/submit', to: 'items/edit/index#submit', as: :items_edit_submit
   end
 
+  scope :orders do
+    # 発注一覧
+    get '/', to: 'orders/index#index', as: :orders
+
+    # 発注検索
+    get '/search', to: 'orders/index#search', as: :orders_search
+  end
 end
