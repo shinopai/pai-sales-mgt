@@ -26,66 +26,39 @@
   </div>
   <div class="receiving">
     <div class="receiving-head--upper flex">
-      <%= link_to '新規作成', items_path, class: 'receiving__btn' %>
       <span class="receiving__number"><%= @results.size %>件</span>
     </div>
     <div class="receiving-head--lower flex">
       <%= paginate @results %>
     </div>
     <% if @results.any? %>
-    <div class="receiving__table-wrap">
-      <table class="receiving__table">
-        <tbody>
-          <tr>
-            <th></th>
-            <th colspan="9">受注</th>
-            <th>配達</th>
-            <th colspan="2">注文</th>
-            <th></th>
-          </tr>
-          <tr>
-            <th>No.</th>
-            <th>受注日</th>
-            <th>受注先</th>
-            <th>商品名</th>
-            <th>数量</th>
-            <th>単価</th>
-            <th>合計</th>
-            <th>備考</th>
-            <th>売上日</th>
-            <th>状態</th>
-            <th>担当者</th>
-            <th>日付</th>
-            <th>注文先</th>
-            <th></th>
-          </tr>
-          <% @results.each do |result| %>
-          <tr class="<%= 'issued' if result.status == '発行済み' %>">
-            <td><%= result.slip_no %></td>
-            <td><%= result.order_date.strftime('%m/%d') %></td>
-            <td><%= result.client.name %></td>
-            <td><%= result.item.name %></td>
-            <td><%= result.quantity %></td>
-            <td><%= number_to_currency(result.item.price) %></td>
-            <td><%= show_total_order_amount(result.item.price, result.quantity) %></td>
-            <td><%= result.notes %></td>
-            <td class="has-color"><%= result.order_date.strftime('%m/%d') %></td>
-            <td class="has-color second <%= 'nis' if result.status == '受注(在庫無)' %>"><%= result.status %></td>
-            <td><%= result.worker.name %></td>
-            <td>test</td>
-            <td>test</td>
-            <td>
-              <div class="flex">
-                <%= link_to '編集', receiving_orders_edit_path(result), class: 'btn' %>
-                <% if result.status == '受注(在庫無)' %>
-                <%= link_to '発注', '#', class: 'btn' %>
-                <% end %>
-              </div>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="order__table-wrap">
+    <table class="order__table">
+      <tbody>
+        <tr>
+        <th>No</th>
+        <th>発注先</th>
+        <th>商品</th>
+        <th>数量</th>
+        <th>発注日</th>
+        <th>手配者</th>
+        <th>状態</th>
+        <th></th>
+        </tr>
+        <% @results.each do |result| %>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        </tr>
+        <% end %>
+  </tbody>
+</table>
     </div>
     <% else %>
     <p class="receiving__txt">発注データはありません</p>

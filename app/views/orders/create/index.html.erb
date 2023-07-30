@@ -1,0 +1,25 @@
+<div class="form-wrap">
+<div class="wrap">
+  <%= form_with model: @order, url: orders_create_submit_path(@item), class: 'form', local: true do |order| %>
+  <h2 class="form__heading">「<%= @item.name %>」の新規発注作成</h2>
+    <div class="form__item">
+      <%= order.label :quantity, '数量', class: 'form__label' %><br />
+      <%= order.text_field :quantity, autofocus: true, autocomplete: "quantity", class: 'form__input' %>
+    </div>
+
+    <div class="form__item">
+      <%= order.label :client_id, '発注先', class: 'form__label' %><br />
+      <%= order.collection_select :supplier_id, Supplier.all, :id, :name, { prompt: "選択してください" }, { class: 'form__select' } %>
+    </div>
+
+    <div class="form__item">
+      <%= order.label :worker_id, '手配者', class: 'form__label' %><br />
+      <%= order.collection_select :worker_id, Worker.all, :id, :name, { prompt: "選択してください" }, { class: 'form__select' } %>
+    </div>
+
+    <div class="form__item last">
+      <%= order.submit '発注', class: 'form__submit' %>
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -52,6 +52,12 @@ Rails.application.routes.draw do
     # 発注一覧
     get '/', to: 'orders/index#index', as: :orders
 
+    # 新規発注作成画面
+    get '/:item_id/create', to: 'orders/create/index#index', as: :orders_create
+
+    # 新規発注作成
+    post '/:item_id/create/submit', to: 'orders/create/index#submit', as: :orders_create_submit
+
     # 発注検索
     get '/search', to: 'orders/index#search', as: :orders_search
   end

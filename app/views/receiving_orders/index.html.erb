@@ -95,7 +95,7 @@
               <div class="flex">
                 <%= link_to '編集', receiving_orders_edit_path(result), class: 'btn' %>
                 <% if result.status == '受注(在庫無)' %>
-                <%= link_to '発注', '#', class: 'btn' %>
+                <%= link_to '発注', orders_create_path(result), class: 'btn' %>
                 <% end %>
               </div>
             </td>

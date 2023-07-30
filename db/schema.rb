@@ -33,10 +33,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_062642) do
     t.integer "status", default: 1, null: false
     t.bigint "item_id", null: false
     t.bigint "supplier_id", null: false
+    t.bigint "worker_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["supplier_id"], name: "index_orders_on_supplier_id"
+    t.index ["worker_id"], name: "index_orders_on_worker_id"
   end
 
   create_table "receiving_orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -83,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_062642) do
 
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "suppliers"
+  add_foreign_key "orders", "workers"
   add_foreign_key "receiving_orders", "clients"
   add_foreign_key "receiving_orders", "items"
   add_foreign_key "receiving_orders", "workers"
