@@ -46,15 +46,22 @@
         <th></th>
         </tr>
         <% @results.each do |result| %>
-        <tr>
+        <tr class="<%= 'cancel' if result.status == 'キャンセル' %>">
         <td><%= result.slip_no %></td>
         <td><%= result.supplier.name %></td>
         <td><%= result.item.name %></td>
         <td><%= result.quantity %></td>
-        <td><%= result.order_date %></td>
+        <td><%= result.order_date.strftime('%m/%d') %></td>
         <td><%= result.worker.name %></td>
         <td><%= result.status %></td>
-        <td></td>
+        <td>
+          <% if result.status != 'キャンセル' %>
+          <%= form_with(url: orders_create_cancel_path(result), data: { confirm: '本当にこの発注をキャンセルしますか? この操作は元に戻せません。', disable_with: 'loading...' }, class: 'order-cancel-form') do |form| %>
+            <%= form.submit 'キャンセル', class: 'order-cancel-form__btn' %>
+            <%= hidden_field_tag :item_id, result.item.id %>
+          <% end %>
+          <% end %>
+        </td>
         </tr>
         <% end %>
   </tbody>

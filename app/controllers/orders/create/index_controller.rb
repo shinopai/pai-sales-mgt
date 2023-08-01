@@ -1,7 +1,7 @@
 class Orders::Create::IndexController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_item
-  before_action :create_obj
+  before_action :find_item, only: %i(index submit)
+  before_action :create_obj, only: %i(index submit)
 
   require 'date'
 
@@ -43,6 +43,21 @@ class Orders::Create::IndexController < ApplicationController
     else
         render 'orders/create/index', status: :unprocessable_entity
     end
+  end
+
+  def cancel
+    order = Order.find(params[:order_id])
+    item = Item.find(params[:item_id])
+
+    # 該当する発注ステータスをキャンセルに変更
+    order.status = 2
+    order.save
+
+    # キャンセルした発注量分だけ、該当する商品から差し引く
+    item.stock = item.stock - order.quantity
+    item.save
+
+    redirect_to orders_path
   end
 
 

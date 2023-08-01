@@ -58,6 +58,9 @@ Rails.application.routes.draw do
     # 新規発注作成
     post '/:item_id/create/submit', to: 'orders/create/index#submit', as: :orders_create_submit
 
+    # 発注キャンセル
+    post '/:order_id/create/cancel', to: 'orders/create/index#cancel', as: :orders_create_cancel
+
     # 発注検索
     get '/search', to: 'orders/index#search', as: :orders_search
   end
