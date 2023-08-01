@@ -60,7 +60,7 @@ class ReceivingOrders::Create::IndexController < ApplicationController
     @order = ReceivingOrder.new
   end
 
-  def receiving_receiving_order_params
+  def receiving_order_params
     params.require(:receiving_order).permit(:quantity, :notes, :client_id, :worker_id)
   end
 end

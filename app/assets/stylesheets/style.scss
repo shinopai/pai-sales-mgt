@@ -12,6 +12,7 @@
   font-size: 1.4rem;
   text-align: center;
   padding: 1em 0;
+  margin-bottom: 20px;
   &__item {
     color: #fff;
   }
@@ -434,6 +435,76 @@
     padding: 0.1em 1em;
     border-radius: 100vh;
   }
+  &__table {
+    margin-top: 15px;
+    border-collapse: collapse;
+    @include mq(w-768) {
+      min-width: 700px;
+    }
+    &-wrap {
+      overflow-x: auto;
+      @include mq(w-768) {
+        overflow-x: scroll;
+      }
+    }
+    tr {
+      &.out-of-stock {
+        background-color: #fad2d3;
+      }
+    }
+    th {
+      @include set-border(1px, solid, rgba(51, 51, 51, 0.5));
+      color: #fff;
+      background-color: $color-blue;
+      font-size: 1.4rem;
+      text-align: left;
+      padding: 0.3em 0.5em;
+      &.code {
+        width: 13%;
+      }
+      &.amount {
+        width: 12%;
+      }
+      &.name {
+        width: 40%;
+      }
+      &.stock {
+        width: 7%;
+      }
+      &.empty {
+        width: 28%;
+      }
+    }
+    td {
+      @include set-border(1px, solid, #a8c2d4);
+      font-size: 1.2rem;
+      padding: 0.5em;
+      .flex {
+        justify-content: flex-start;
+        column-gap: 15px;
+        .btn {
+          background-color: $color-blue;
+          color: #fff;
+          font-size: 1.4rem;
+          width: 75px;
+          text-align: center;
+          padding: 0.1em 0;
+          border-radius: 3px;
+          @include mq(w-1024) {
+            width: 50px;
+          }
+        }
+      }
+    }
+  }
+  &__txt {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+}
+
+//  発注一覧画面
+.order {
   &__table {
     margin-top: 15px;
     border-collapse: collapse;

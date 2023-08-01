@@ -16,3 +16,10 @@ ja:
         status: 状態
         client: 受注先
         worker: 担当者
+      order:
+        slip_no: 伝票番号
+        order_date: 発注日
+        quantity: 数量
+        status: 状態
+        supplier: 発注先
+        worker: 手配者

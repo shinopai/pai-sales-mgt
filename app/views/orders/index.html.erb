@@ -47,13 +47,13 @@
         </tr>
         <% @results.each do |result| %>
         <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= result.slip_no %></td>
+        <td><%= result.supplier.name %></td>
+        <td><%= result.item.name %></td>
+        <td><%= result.quantity %></td>
+        <td><%= result.order_date %></td>
+        <td><%= result.worker.name %></td>
+        <td><%= result.status %></td>
         <td></td>
         </tr>
         <% end %>

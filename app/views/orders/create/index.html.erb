@@ -2,6 +2,15 @@
 <div class="wrap">
   <%= form_with model: @order, url: orders_create_submit_path(@item), class: 'form', local: true do |order| %>
   <h2 class="form__heading">「<%= @item.name %>」の新規発注作成</h2>
+    <% if defined? @new_order %>
+  <% if @new_order.errors.any? %>
+    <ul class="err-list">
+      <% @new_order.errors.full_messages.each do |message| %>
+        <li class="err-list__item"><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% end %>
     <div class="form__item">
       <%= order.label :quantity, '数量', class: 'form__label' %><br />
       <%= order.text_field :quantity, autofocus: true, autocomplete: "quantity", class: 'form__input' %>

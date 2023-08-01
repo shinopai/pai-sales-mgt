@@ -34,7 +34,7 @@
           <th></th>
         </tr>
         <% @results.each do |result| %>
-        <tr class="<%= 'out-of-stock' if result.stock == 0 %>">
+        <tr class="<%= 'out-of-stock' if result.stock <= 0 %>">
           <td><%= result.code %></td>
           <td><%= result.name %></td>
           <td><%= result.stock %></td>
