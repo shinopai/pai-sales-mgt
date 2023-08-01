@@ -1,0 +1,74 @@
+<div class="wrap">
+  <h2 class="basic-heading">発注一覧</h2>
+  <div class="search-area">
+    <h2 class="search-area__heading">検索条件</h2>
+    <%= search_form_for @q, url: orders_search_path, class: 'search-form flex' do |search| %>
+    <div class="search-form__item">
+      <%= search.label :supplier_name_cont, '発注先', class: 'search-form__label' %>
+      <%= search.text_field :supplier_name_cont, class: 'search-form__input' %>
+    </div>
+    <div class="search-form__item">
+      <%= search.label :item_name_cont, '商品', class: 'search-form__label' %>
+      <%= search.text_field :item_name_cont, class: 'search-form__input' %>
+    </div>
+    <div class="search-form__item">
+      <%= search.label :order_date_gteq, '発注日', class: 'search-form__label' %>
+      <%= search.date_field :order_date_gteq, class: 'search-form__date' %>
+      <span>&#65374;</span>
+      <%= search.date_field :order_date_lteq, class: 'search-form__date' %>
+    </div>
+    <div class="search-form__item">
+      <div class="search-form__submit-wrap">
+      <%= search.submit '検索', class: 'search-form__submit' %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="receiving">
+    <div class="receiving-head--upper flex">
+      <span class="receiving__number"><%= @results.size %>件</span>
+    </div>
+    <div class="receiving-head--lower flex">
+      <%= paginate @results %>
+    </div>
+    <% if @results.any? %>
+    <div class="order__table-wrap">
+    <table class="order__table">
+      <tbody>
+        <tr>
+        <th>No</th>
+        <th>発注先</th>
+        <th>商品</th>
+        <th>数量</th>
+        <th>発注日</th>
+        <th>手配者</th>
+        <th>状態</th>
+        <th></th>
+        </tr>
+        <% @results.each do |result| %>
+        <tr class="<%= 'cancel' if result.status == 'キャンセル' %>">
+        <td><%= result.slip_no %></td>
+        <td><%= result.supplier.name %></td>
+        <td><%= result.item.name %></td>
+        <td><%= result.quantity %></td>
+        <td><%= result.order_date.strftime('%m/%d') %></td>
+        <td><%= result.worker.name %></td>
+        <td><%= result.status %></td>
+        <td>
+          <% if result.status != 'キャンセル' %>
+          <%= form_with(url: orders_create_cancel_path(result), data: { confirm: '本当にこの発注をキャンセルしますか? この操作は元に戻せません。', disable_with: 'loading...' }, class: 'order-cancel-form') do |form| %>
+            <%= form.submit 'キャンセル', class: 'order-cancel-form__btn' %>
+            <%= hidden_field_tag :item_id, result.item.id %>
+          <% end %>
+          <% end %>
+        </td>
+        </tr>
+        <% end %>
+  </tbody>
+</table>
+    </div>
+    <% else %>
+    <p class="receiving__txt">発注データはありません</p>
+    <% end %>
+  </div>
+</div>
